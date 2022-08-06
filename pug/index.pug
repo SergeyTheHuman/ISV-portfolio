@@ -9,18 +9,31 @@ html(lang="ru")
 	body
 
 		main.wrapper
-			.asd
-				.frame
-					.frame__content Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жизни своих букв первую. Своего то выйти, дороге, города коварный решила путь что о, ее запятых пунктуация домах прямо рот.
-				.frame
-					.frame__content Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi dignissimos dolore doloribus repellendus ea asperiores odio eaque ipsa? Ex numquam molestias consequatur repudiandae qui beatae!
-				.frame
-					.frame__content Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Сбить сих буквенных последний власти?
-				.frame
-					.frame__content Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolores unde ea quod doloribus totam tempore nobis! Illum, illo quae.
-				.frame
-					.frame__content Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Раз имеет собрал ipsum там. Предложения свое повстречался маленькая! Снова предупреждал залетают власти, коварных но злых семантика текста образ, до осталось толку которой все напоивший.
-
+			.slider
+				section.slider__frame.slide
+					.slide__content.slide__content--grid-rows
+						h1.slide__title Здравствуйте. #[br] Меня зовут Сергей, и это мой сайт-портфолио.
+				section.slider__frame.slide
+					.slide__content.slide__content--grid-cols
+						h2.slide__subtitle Больше года назад я выбрал путь фронтенд разработчика.
+						img.slide__image(src="@img/photo.png", alt="Фото Сергея")
+				section.slider__frame.slide
+					.slide__content.slide__content--grid-rows
+						h2.slide__subtitle Что я могу вам предложить?
+						.slide__cards
+							article.slide__card.card
+								h3.card__title Выполнение заказа в срок
+								p.card__text Если я не успею сдать заказ в срок, то за каждый день после дедлайна буду делать скидку на 1000 рублей. Для вас это гарантия, а для меня мотивация. 
+							article.slide__card.card
+								h3.card__title Надежная верстка
+								p.card__text Верстка будет готова к изменению контента, не важно, больше его станет или меньше, будет изображение в посте или нет, не важен и размер изображения. Верстка не сломается и будет вести себя адекватно.
+							article.slide__card.card
+								h3.card__title Справедливая цена
+								p.card__text Цена на ваш заказ будет соответствовать уровню моих услуг. Я не буду искусственно завышать цену или сильно занижать ее, чтобы получить заказ. Я уважаю как клиента, так и свое время. 
+							article.slide__card.card
+								h3.card__title Адаптивность и кроссбраузерность
+								p.card__text Сначала я думал пропустить этот пункт, так как считаю его стандартом для любого вебсайта. Ваш сайт будет одинаково выглядеть в любом браузере и правильно адаптироваться под все виды устройств.
+				
 		//- include components/header
 
 		//- include components/footer

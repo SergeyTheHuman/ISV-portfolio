@@ -1,31 +1,80 @@
-:root
-	--body-height: 5000px
-	--frames-gap: 1000
 
 body
 	height: var(--body-height)
 
 .wrapper
-	position: fixed
-	width: 100vw
-	height: 100vh
+	width: 100%
+	height: 100%
 	background-color: var(--color-black)
-	perspective: 2000px
+	position: fixed
+	perspective: 1500px
 	will-change: transform
-.asd
+
+.slider
 	transform-style: preserve-3d
 	width: 100%
 	height: 100%
-.frame
-	position: absolute
-	width: 100%
-	height: 100%
-	display: flex
-	justify-content: center
-	align-items: center
-	// transition: transform 0.25s ease
+	&__frame
+		position: absolute
+		width: 100%
+		height: 100%
+		display: flex
+		justify-content: center
+		align-items: center
+		opacity: 0
+		will-change: transform
+		transition: transform var(--transition-duration) var(--transition-function), opacity var(--transition-duration) var(--transition-function)
+
+.slide
 	&__content
-		max-width: 1200px
-		color: var(--color-white)
-		font-size: var(--font-size)
+		max-width: 75%
 		line-height: 2
+		display: grid
+		&--grid-cols
+			grid-template-columns: repeat(2, 1fr)
+			column-gap: var(--gutter)
+			align-items: center
+		&--grid-rows
+			grid-template-rows: auto 1fr
+			row-gap: calc(var(--gutter) / 2)
+			.slide__subtitle
+				text-align: center
+	&__title
+		max-width: 75%
+		text-align: center
+		font-size: 2.5rem
+		margin: 0 auto
+		font-weight: 400
+	&__subtitle
+		font-weight: 500
+		text-align: right
+		font-size: 2rem
+	&__image
+		width: 100%
+		height: auto
+		max-height: 700px
+		object-fit: contain
+	&__cards
+		display: grid
+		grid-template-columns: repeat(2, 1fr)
+		gap: calc(var(--gutter) / 2)
+
+.card
+	padding: 25px
+	border: 2px solid var(--color-light-blue)
+	border-radius: 15px
+	transition: box-shadow 0.3s ease, transform 0.3s ease
+	@media screen and ( any-hover: hover )
+		&:hover
+			-webkit-box-shadow: 0px 0px 20px 0px rgba(0, 178, 184, 0.75)
+			-moz-box-shadow: 0px 0px 20px 0px rgba(0, 178, 184, 0.75)
+			box-shadow: 0px 0px 20px 0px rgba(0, 178, 184, 0.75)
+			transform: scale(1.03)
+	&__title
+		font-weight: 400
+		font-size: 1.5rem
+		margin-bottom: 0.75em
+		line-height: 1
+	&__text
+		line-height: 1.5
+		// font-size: 0.875rem

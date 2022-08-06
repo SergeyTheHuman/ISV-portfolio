@@ -5,14 +5,24 @@
 :root
 	--color-white: #ffffff
 	--color-black: #000000
+	--color-light-blue: #00b2b8
 
-	--font-size: 16px
-	--font-family: sans-serif
-	--font-weight: 400
+	--size-index: calc(1vw + 1vh)
 
-	--transition: 0.3s all ease-in-out
+	--font-size: calc(var(--size-index) * 0.8)
+	--font-family: Comfortaa, sans-serif
+	--font-weight: 300
+
+	--line-height: 1.75
 
 	--container: 1300px
+
+	--body-height: 5000px
+
+	--transition-duration: 1s
+	--transition-function: cubic-bezier(.9,-0.23,.38,1)
+
+	--gutter: 80px
 
 //----------------------ANIMATIONS----------------------//	
 @keyframes fadeAnimation
@@ -45,10 +55,16 @@ a
 	text-decoration: none
 
 body
-	color: var(--color-black)
-	background: var(--color-white)
+	color: rgba(#00b2b8, 0.8)
+	background: var(--color-black)
 	font-family: var(--font-family)
 	font-weight: var(--font-weight)
+	line-height: var(--line-height)
+	letter-spacing: 2px
+	scrollbar-width: none
+
+body::-webkit-scrollbar
+	display: none
 
 .container
 	@include container(var(--container))

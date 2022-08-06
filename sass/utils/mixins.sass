@@ -21,10 +21,10 @@
 	background-position: #{$position}
 	background-repeat: #{$repeat}
 
-@mixin container($container, $padding: 25)
+@mixin container($container, $padding: 25px)
 	width: 100%
-	max-width: calc(#{$container} + #{$padding}px * 2)
-	padding: 0 #{$padding}px
+	max-width: calc(#{$container} + #{$padding} * 2)
+	padding: 0 #{$padding}
 	margin: 0 auto
 
 @mixin adaptiveProp($property, $start_value, $end_value, $container, $min_width, $type: 0)

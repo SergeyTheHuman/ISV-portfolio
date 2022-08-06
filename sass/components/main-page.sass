@@ -1,0 +1,31 @@
+:root
+	--body-height: 5000px
+	--frames-gap: 1000
+
+body
+	height: var(--body-height)
+
+.wrapper
+	position: fixed
+	width: 100vw
+	height: 100vh
+	background-color: var(--color-black)
+	perspective: 2000px
+	will-change: transform
+.asd
+	transform-style: preserve-3d
+	width: 100%
+	height: 100%
+.frame
+	position: absolute
+	width: 100%
+	height: 100%
+	display: flex
+	justify-content: center
+	align-items: center
+	// transition: transform 0.25s ease
+	&__content
+		max-width: 1200px
+		color: var(--color-white)
+		font-size: var(--font-size)
+		line-height: 2

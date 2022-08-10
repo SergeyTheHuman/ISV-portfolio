@@ -1,29 +1,32 @@
-
-body
+body.scroll-3d
 	height: var(--body-height)
+
+.wrapper.scroll-3d
+	position: fixed
+	perspective: 1500px
+	will-change: transform
+	.slider
+		transform-style: preserve-3d
+		&__frame
+			position: absolute
+			width: 100%
+			height: 100%
+			will-change: transform
+			opacity: 0
+			transition: transform var(--transition-duration) var(--transition-function), opacity var(--transition-duration) var(--transition-function)
+
+.slider
+	width: 100%
+	height: 100%
+	&__frame
+		display: flex
+		justify-content: center
+		align-items: center
 
 .wrapper
 	width: 100%
 	height: 100%
 	background-color: var(--color-black)
-	position: fixed
-	perspective: 1500px
-	will-change: transform
-
-.slider
-	transform-style: preserve-3d
-	width: 100%
-	height: 100%
-	&__frame
-		position: absolute
-		width: 100%
-		height: 100%
-		display: flex
-		justify-content: center
-		align-items: center
-		opacity: 0
-		will-change: transform
-		transition: transform var(--transition-duration) var(--transition-function), opacity var(--transition-duration) var(--transition-function)
 
 .slide
 	&__content
@@ -57,24 +60,61 @@ body
 	&__cards
 		display: grid
 		grid-template-columns: repeat(2, 1fr)
-		gap: calc(var(--gutter) / 2)
+		gap: calc(var(--gutter) / 3)
+		position: relative
+		&-col
+	&__technologies
+		display: flex
+		flex-wrap: wrap
+		justify-content: center
+		gap: 15px
+
+.card-technology
+	min-width: 125px
+	max-width: 250px
+	font-size: 1rem
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+	border-radius: 27% 73% 70% 30% / 30% 30% 70% 70%
+	box-shadow: inset 0px 0px 20px 0px rgba(var(--color-accent-rgb), 1)
+	transition: border-radius 0.6s ease
+	padding: 2em 1.5em
+	gap: 10px
+	&__title
+		width: 100%
+		text-align: center
+		font-size: 1.25em
+		line-height: 1.2
+	&__image
+		width: 3.5em
+		min-width: 40px
+		height: 3.5em
+		min-height: 40px
+		object-fit: contain
 
 .card
-	padding: 25px
-	border: 2px solid var(--color-light-blue)
+	flex: 1 0 47%
+	overflow: hidden
+	border: 2px solid var(--color-accent)
 	border-radius: 15px
-	transition: box-shadow 0.3s ease, transform 0.3s ease
+	transition: all 0.3s ease
+	&:not(:last-child)
+		margin-bottom: 1em
 	@media screen and ( any-hover: hover )
 		&:hover
-			-webkit-box-shadow: 0px 0px 20px 0px rgba(0, 178, 184, 0.75)
-			-moz-box-shadow: 0px 0px 20px 0px rgba(0, 178, 184, 0.75)
-			box-shadow: 0px 0px 20px 0px rgba(0, 178, 184, 0.75)
+			-webkit-box-shadow: 0px 0px 20px 0px rgba(var(--color-accent-rgb), 0.75)
+			-moz-box-shadow: 0px 0px 20px 0px rgba(var(--color-accent-rgb), 0.75)
+			box-shadow: 0px 0px 20px 0px rgba(var(--color-accent-rgb), 0.75)
 			transform: scale(1.03)
 	&__title
+		cursor: pointer
+		padding: 1em
+		padding-right: 2.5em
 		font-weight: 400
 		font-size: 1.5rem
-		margin-bottom: 0.75em
 		line-height: 1
 	&__text
+		padding: 0 1.5em
 		line-height: 1.5
-		// font-size: 0.875rem

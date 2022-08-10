@@ -1,86 +1,44 @@
-import { isWebp } from './components/isWebp.js'
+import { isWebp } from './utils/isWebp.js'
+import './components/scroll-3d.js'
+import Accordion from 'accordion-js'
+
+const $cardsCols = document.querySelectorAll('.slide__cards-col')
+const $technologyCards = document.querySelectorAll('.card-technology')
+
+$cardsCols.forEach((el) => {
+	const accordion = new Accordion(el, {
+		duration: 300,
+		showMultiple: false,
+	})
+})
 
 isWebp()
 
-const $frames = Array.from(document.querySelectorAll('.slider__frame'))
-const $html = document.querySelector('html')
+let borderRadiusProps = []
+let borderRadiusPropsInvert = []
 
-const zSpacing = -20000
-const transition = 1500
-let lastPosition = 0
-let zValues = []
-
-const bodyHeight = ($frames.length - 1) * Math.abs(zSpacing)
-
-function throttle(callback, timeout) {
-	let timer = null
-
-	return function perform(...args) {
-		if (timer) return
-
-		callback(...args)
-		timer = setTimeout(() => {
-			clearTimeout(timer)
-			timer = null
-		}, timeout)
+function getRandomBorderRadius(el) {
+	let borderRadiusValues = []
+	for (let i = 0; i < 8; i++) {
+		borderRadiusValues.push(Math.round(Math.random() * 100))
 	}
+	let borderRadius = `border-radius: ${borderRadiusValues[0]}% ${borderRadiusValues[1]}% ${borderRadiusValues[2]}% ${borderRadiusValues[3]}% / ${borderRadiusValues[4]}% ${borderRadiusValues[5]}% ${borderRadiusValues[6]}% ${borderRadiusValues[7]}%`
+	let borderRadiusInvert = `border-radius: ${100 - borderRadiusValues[0]}% ${100 - borderRadiusValues[1]}% ${100 - borderRadiusValues[2]}% ${
+		100 - borderRadiusValues[3]
+	}% / ${100 - borderRadiusValues[4]}% ${100 - borderRadiusValues[5]}% ${100 - borderRadiusValues[6]}% ${100 - borderRadiusValues[7]}%`
+
+	borderRadiusProps.push(borderRadius)
+	borderRadiusPropsInvert.push(borderRadiusInvert)
+
+	el.style.cssText = borderRadius
 }
 
-function resetScrollAfterReload(params) {
-	setTimeout(() => {
-		window.scrollTo(0, 0)
-	}, 200)
-}
-
-function initFramesZPositions() {
-	$frames.forEach((frame, index) => {
-		zValues.push(index * zSpacing)
-		console.log(zValues[index] === 0)
-		if (zValues[index] === 0) {
-			frame.style.cssText = `opacity: 1; transform: translateZ(${zValues[index]}px)`
-			return
-		}
-		frame.style.cssText = `transform: translateZ(${zValues[index]}px);`
+$technologyCards.forEach((el, idx) => {
+	getRandomBorderRadius(el)
+	el.addEventListener('mouseenter', () => {
+		el.style.cssText = borderRadiusPropsInvert[idx]
 	})
-}
-
-function setCssVars() {
-	$html.style.setProperty('--body-height', `${bodyHeight}px`)
-	$html.style.setProperty('--transition-duration', `${transition / 1000}s`)
-}
-
-function updateFramesZPosition(delta) {
-	$frames.forEach((frame, index) => {
-		zValues[index] += delta * -2
-		frame.style.cssText = `transform: translateZ(${zValues[index]}px);`
+	el.addEventListener('mouseleave', () => {
+		el.style.cssText = borderRadiusProps[idx]
 	})
-}
-
-setCssVars()
-resetScrollAfterReload()
-initFramesZPositions()
-
-window.addEventListener('scroll', () => {
-	let top = document.documentElement.scrollTop
-	let delta = lastPosition - top
-
-	lastPosition = top
-	// updateFramesZPosition(delta)
-
-	throttledChangeFrame(delta)
 })
-
-const throttledChangeFrame = throttle(changeFrame, transition)
-
-function changeFrame(delta) {
-	if (zValues[0] === 0 && delta > 0) return
-	if (zValues[zValues.length - 1] === 0 && delta < 0) return
-	$frames.forEach((frame, index) => {
-		delta < 0 ? (zValues[index] -= zSpacing) : (zValues[index] += zSpacing)
-		if (zValues[index] === 0) {
-			frame.style.cssText = `opacity: 1; transform: translateZ(${zValues[index]}px)`
-			return
-		}
-		frame.style.cssText = `transform: translateZ(${zValues[index]}px);`
-	})
-}

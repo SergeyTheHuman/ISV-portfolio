@@ -1,0 +1,41 @@
+doctype html
+html(lang="ru")
+	head
+		include utils/mixins
+		include utils/meta
+		include utils/links
+		include utils/fonts
+		title Портфолио
+	body
+		main
+			.container
+				section.portfolio
+					.portfolio__content
+						h1.slide__title.portfolio__title Портфолио
+						.portfolio__grid
+							a(href='#').portfolio__item.portfolio-item
+								.portfolio-item__title Интернет-магазин техники Smart Shop
+								img.portfolio-item__img(src="@img/websites/smart-shop.png", alt="smart-shop")
+								span.portfolio-item__span Подробнее
+							a(href='#').portfolio__item.portfolio-item
+								.portfolio-item__title Корпоративный сайт акватерапии RitmStyle
+								img.portfolio-item__img(src="@img/websites/RitmStyle.png", alt="RitmStyle")
+								span.portfolio-item__span Подробнее
+							a(href='#').portfolio__item.portfolio-item
+								.portfolio-item__title Лэндинг для NTF-компании
+								img.portfolio-item__img(src="@img/websites/NFT.png", alt="NFT")
+								span.portfolio-item__span Подробнее
+							a(href='#').portfolio__item.portfolio-item
+								.portfolio-item__title Корпоративный сайт для хоккейного клуба
+								img.portfolio-item__img(src="@img/websites/hockey.png", alt="hockey")
+								span.portfolio-item__span Подробнее
+							a(href='#').portfolio__item.portfolio-item
+								.portfolio-item__title Корпоративный сайт компании Advision
+								img.portfolio-item__img(src="@img/websites/advision-website.png", alt="advision")
+								span.portfolio-item__span Подробнее
+								
+				
+		//- include components/header
+
+		//- include components/footer
+		include utils/scripts

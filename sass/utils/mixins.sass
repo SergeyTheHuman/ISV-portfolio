@@ -26,6 +26,8 @@
 	max-width: calc(#{$container} + #{$padding} * 2)
 	padding: 0 #{$padding}
 	margin: 0 auto
+	@media screen and ( max-width: 480px )
+		padding: 0 10px
 
 @mixin adaptiveProp($property, $start_value, $end_value, $container, $min_width, $type: 0)
 	$addsize: $start_value - $end_value

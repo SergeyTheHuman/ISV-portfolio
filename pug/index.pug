@@ -5,10 +5,9 @@ html(lang="ru")
 		include utils/meta
 		include utils/links
 		include utils/fonts
-		title Main Page
-	body
-
-		main.wrapper
+		title Главная
+	body.scroll-3d
+		main.wrapper.scroll-3d
 			.slider
 				section.slider__frame.slide
 					.slide__content.slide__content--grid-rows
@@ -21,20 +20,84 @@ html(lang="ru")
 					.slide__content.slide__content--grid-rows
 						h2.slide__subtitle Что я могу вам предложить?
 						.slide__cards
-							article.slide__card.card
-								h3.card__title Выполнение заказа в срок
-								p.card__text Если я не успею сдать заказ в срок, то за каждый день после дедлайна буду делать скидку на 1000 рублей. Для вас это гарантия, а для меня мотивация. 
-							article.slide__card.card
-								h3.card__title Надежная верстка
-								p.card__text Верстка будет готова к изменению контента, не важно, больше его станет или меньше, будет изображение в посте или нет, не важен и размер изображения. Верстка не сломается и будет вести себя адекватно.
-							article.slide__card.card
-								h3.card__title Справедливая цена
-								p.card__text Цена на ваш заказ будет соответствовать уровню моих услуг. Я не буду искусственно завышать цену или сильно занижать ее, чтобы получить заказ. Я уважаю как клиента, так и свое время. 
-							article.slide__card.card
-								h3.card__title Адаптивность и кроссбраузерность
-								p.card__text Сначала я думал пропустить этот пункт, так как считаю его стандартом для любого вебсайта. Ваш сайт будет одинаково выглядеть в любом браузере и правильно адаптироваться под все виды устройств.
+							.slide__cards-col
+								article.slide__card.card.ac
+									h3.card__title.ac-header.ac-trigger Выполнение заказа в срок
+									p.card__text.ac-panel Если я не успею сдать заказ в срок, то за каждый день после дедлайна буду делать скидку на 1000 рублей. Для вас это гарантия, а для меня мотивация. 
+								article.slide__card.card.ac
+									h3.card__title.ac-header.ac-trigger Надежная верстка
+									p.card__text.ac-panel Верстка будет готова к изменению контента, не важно, больше его станет или меньше, будет изображение в посте или нет, не важен и размер изображения. Верстка не сломается и будет вести себя адекватно.
+								article.slide__card.card.ac
+									h3.card__title.ac-header.ac-trigger Оптимизация
+									p.card__text.ac-panel Вебсайт будет максимально оптимизирован для быстрой загрузки: исходные файлы, изображения, шрифты и т.д. будут сжаты. Зеленая зона PageSpeed Insights.
+							.slide__cards-col
+								article.slide__card.card.ac
+									h3.card__title.ac-header.ac-trigger Справедливая цена
+									p.card__text.ac-panel Цена на ваш заказ будет соответствовать уровню моих услуг. Я не буду искусственно завышать цену или сильно занижать ее, чтобы получить заказ. Я уважаю как клиента, так и свое время. 
+								article.slide__card.card.ac
+									h3.card__title.ac-header.ac-trigger Адаптивность и кроссбраузерность
+									p.card__text.ac-panel Ваш сайт будет одинаково выглядеть в любом браузере и правильно адаптироваться под все виды устройств.
+								article.slide__card.card.ac
+									h3.card__title.ac-header.ac-trigger Работаю каждый день
+									p.card__text.ac-panel Во время выполнения заказа я работаю без выходных. Благодаря этому ваш заказ будет выполнен максимально быстро. Также вы сможете каждый день наблюдать за прогрессом, сразу же вносить правки, если они будут.
+				section.slider__frame.slide
+					.slide__content.slide__content--grid-rows
+						h2.slide__subtitle Технологии, которые я использую в работе:
+						.slide__technologies
+							.slide__technology.card-technology
+								h3.card-technology__title HTML 5
+								img.card-technology__image(src="@img/technologies/HTML.png", alt="HTML logo")
+							.slide__technology.card-technology
+								h3.card-technology__title PUG
+								img.card-technology__image(src="@img/technologies/pug.png", alt="PUG logo")
+							.slide__technology.card-technology
+								h3.card-technology__title CSS 3
+								img.card-technology__image(src="@img/technologies/CSS.png", alt="CSS logo")
+							.slide__technology.card-technology
+								h3.card-technology__title SASS
+								img.card-technology__image(src="@img/technologies/sass.png", alt="SASS logo")
+							.slide__technology.card-technology
+								h3.card-technology__title Javascript
+								img.card-technology__image(src="@img/technologies/JavaScript.png", alt="Javascript logo")
+							.slide__technology.card-technology
+								h3.card-technology__title VS Code
+								img.card-technology__image(src="@img/technologies/vscode.png", alt="VS Code logo")
+							.slide__technology.card-technology
+								h3.card-technology__title Gulp
+								img.card-technology__image(src="@img/technologies/gulp.png", alt="Gulp logo")
+							.slide__technology.card-technology
+								h3.card-technology__title Webpack
+								img.card-technology__image(src="@img/technologies/webpack.png", alt="Webpack logo")
+							.slide__technology.card-technology
+								h3.card-technology__title Figma
+								img.card-technology__image(src="@img/technologies/Figma.png", alt="Figma logo")
+							.slide__technology.card-technology
+								h3.card-technology__title Photoshop
+								img.card-technology__image(src="@img/technologies/photoshop.png", alt="Adobe Photoshop logo")
+							.slide__technology.card-technology
+								h3.card-technology__title БЭМ
+								img.card-technology__image(src="@img/technologies/BEM.png", alt="BEM logo")
+							.slide__technology.card-technology
+								h3.card-technology__title Tailwind
+								img.card-technology__image(src="@img/technologies/Tailwind.png", alt="Tailwind logo")
+							.slide__technology.card-technology
+								h3.card-technology__title Bootstrap
+								img.card-technology__image(src="@img/technologies/Bootstrap.png", alt="Bootstrap logo")
+							.slide__technology.card-technology
+								h3.card-technology__title GIT
+								img.card-technology__image(src="@img/technologies/Git.png", alt="GIT logo")
+				section.slider__frame.slide
+					.slide__content.slide__content--grid-rows
+						h2.slide__subtitle Технологии, которые я использую в работе:
+						.slide__websites
+							.slide__website.card-website
+								h3.card-website__title HTML 5
+
+							
+								
 				
 		//- include components/header
 
 		//- include components/footer
+		script(src='js/')
 		include utils/scripts

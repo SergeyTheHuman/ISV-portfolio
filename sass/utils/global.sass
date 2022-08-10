@@ -5,8 +5,9 @@
 :root
 	--color-white: #ffffff
 	--color-black: #000000
-	--color-accent: #00b2b8
-	--color-accent-rgb: 0, 178, 184
+	--color-accent: #FF8066
+	--color-dark-gray: #0f0f0f
+	--color-accent-rgb: 255, 128, 102
 
 	--size-index: calc(1vw + 1vh)
 
@@ -62,9 +63,10 @@ body
 	font-weight: var(--font-weight)
 	line-height: var(--line-height)
 	letter-spacing: 2px
-	scrollbar-width: none
 
-body::-webkit-scrollbar
+body.scroll-3d
+	scrollbar-width: none
+body.scroll-3d::-webkit-scrollbar
 	display: none
 
 .container
@@ -76,6 +78,13 @@ body::-webkit-scrollbar
 .btn-reset
 	border: none
 	outline: none
-	background-color: var(--color-white)
+	background-color: transparent
+	font-family: var(--font-family)
 	font-size: 1rem
 	cursor: pointer
+
+::selection
+	background: #3b3b3b
+
+::-moz-selection
+	background: #3b3b3b

@@ -1,0 +1,195 @@
+.modal-overlay
+	content: ''
+	position: fixed
+	z-index: 0
+	top: 0
+	left: 0
+	bottom: 0
+	right: 0
+	width: 100%
+	height: 100%
+	background-color: rgb(184, 38, 38)
+	opacity: 0
+	pointer-events: none
+	transition: opacity 0.3s ease
+	&.modal--opened
+		pointer-events: unset
+		opacity: .3
+
+.website-modal
+	position: fixed
+	z-index: 1
+	overflow-y: auto
+	right: 0
+	top: 0
+	bottom: 0
+	width: 40%
+	min-width: 300px
+	max-width: 1200px
+	padding: 30px 20px 10px 20px
+	background-color: var(--color-dark-gray)
+	display: flex
+	flex-direction: column
+	gap: 25px
+	box-shadow: -30px 20px 50px 35px rgba(0,0,0, 1)
+	transform: translateX(150%)
+	transition: transform 0.3s ease
+	&.modal--opened
+		transform: translateX(0)
+	@media screen and ( max-width: 992px )
+		width: 60%
+	@media screen and ( max-width: 425px )
+		width: 100%
+	&__cross
+		--padding: 10px
+		position: absolute
+		top: 25px
+		right: 25px
+		width: calc(2.25rem + var(--padding) * 2)
+		height: calc(2.25rem + var(--padding) * 2)
+		min-width: 30px
+		min-height: 30px
+		padding: var(--padding)
+		border: 2px solid var(--color-white)
+		border-radius: 15px
+		@media screen and ( max-width: 992px )
+			--padding: 5px
+			border-radius: 10px
+			border-width: 1px
+		&:after,
+		&:before
+			content: ''
+			display: block
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%,-50%)
+			width: calc(100% - var(--padding) * 2)
+			height: 4px
+			border-radius: 50%
+			background-color: var(--color-white)
+			@media screen and ( max-width: 992px )
+				height: 2px
+		&:before
+			transform: translate(-50%,-50%) rotate(45deg)
+		&:after
+			transform: translate(-50%,-50%) rotate(-45deg)
+		@media screen and ( any-hover: hover )
+			&:hover
+				animation-name: crossBorderAnimation, crossSkewAnimation
+				animation-duration: 1s, 0.75s
+				animation-iteration-count: 1, 1
+				&:before
+					animation: crossBeforeAnimation 1s ease 0s 1
+				&:after
+					animation: crossAfterAnimation 1s ease 0s 1
+
+	&__title
+		font-size: clamp(18px, 2rem, 30px)
+		line-height: 1.2
+		padding-right: 80px
+		@media screen and ( max-width: 768px )
+			padding-right: 60px
+	&__category
+		font-size: clamp(16px, 1.25rem, 22px)
+		line-height: 1
+	&__text
+		font-size: clamp(14px, 1rem, 22px)
+		display: flex
+		flex-direction: column
+		gap: 10px
+	&__descr
+	&__technologies
+	&__pages
+		font-size: clamp(16px, 1.25rem, 22px)
+	&__list
+		margin-top: 10px
+		font-size: clamp(12px, 0.75rem, 16px)
+		display: flex
+		flex-wrap: wrap
+	&__li
+		@media screen and ( any-hover: hover )
+			&:hover
+				.website-modal__link:before
+					transform: scaleX(1)
+					transform-origin: left
+					transition: transform 0.6s ease
+				.website-modal__link:after
+					opacity: 1
+					transition: opacity 0.3s ease
+					transition-delay: .3s
+	&__link
+		position: relative
+		display: inline-block
+		height: 100%
+		padding: 7px 10px
+		&:after,
+		&:before
+			content: ''
+			display: block
+			position: absolute
+			top: 0
+			left: 0
+			height: 100%
+			width: 100%
+		&:before
+			transform-origin: right
+			transform: scaleX(0)
+			background-color: var(--color-white)
+			transition: transform 0.6s ease
+		&:after
+			content: attr(data-hover-name)
+			display: flex
+			justify-content: center
+			align-items: center
+			padding: 10px
+			color: var(--color-black)
+			opacity: 0
+			transition: opacity 0.2s ease
+	&__image
+		@media screen and ( max-width: 768px )
+			margin: 0 -10px
+		img
+			max-width: 100%
+
+@keyframes crossBeforeAnimation
+	0%
+		transform: translate(-50%,-50%) rotate(45deg) scale(1)
+
+	50%
+		transform: translate(-50%,-50%) rotate(45deg) scale(1.25)
+	100%
+		transform: translate(-50%,-50%) rotate(45deg) scale(1)
+
+@keyframes crossAfterAnimation
+	0%
+		transform: translate(-50%,-50%) rotate(-45deg) scale(1)
+	50%
+		transform: translate(-50%,-50%) rotate(-45deg) scale(1.25)
+	100%
+		transform: translate(-50%,-50%) rotate(-45deg) scale(1)
+
+@keyframes crossBorderAnimation
+	0%
+		transform: skew(0deg)
+		border-color: rgba(255, 255, 255, 1)
+	50%
+		border-color: rgba(255, 255, 255, 0)
+
+	100%
+		transform: skew(0deg)
+		border-color: rgba(255, 255, 255, 1)
+
+@keyframes crossSkewAnimation
+	0%
+		transform: skew(0deg, 0deg) scale(1)
+	20%
+		transform: skew(5deg, 5deg) scale(0.95)
+	40%
+		transform: skew(-5deg,-5deg) scale(0.9)
+	60%
+		transform: skew(5deg,5deg) scale(0.9)
+	80%
+		transform: skew(-5deg,-5deg) scale(0.95)
+	100%
+		transform: skew(0deg, 0deg) scale(1)

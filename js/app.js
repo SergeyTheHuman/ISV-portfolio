@@ -56,25 +56,41 @@ if ($technologyCards) {
 const $websiteCards = document.querySelectorAll('.portfolio__item')
 const $websiteModal = document.querySelector('.website-modal')
 const $websiteModalOverlay = document.querySelector('.modal-overlay')
-let isModalOpened = false
 if ($websiteCards && $websiteModal) {
+	let isModalOpened = false
+
 	document.addEventListener('click', (e) => {
-		if (e.target.closest('.portfolio__item')) {
+		if (e.target.closest('.portfolio__item') && !isModalOpened) {
+			const card = e.target.closest('.portfolio__item')
+			const cardWebsite = card.getAttribute('data-website-id')
+			renderWebsiteModal(websitesData[cardWebsite], $websiteModal)
+
 			$websiteModal.classList.add('modal--opened')
 			$websiteModalOverlay.classList.add('modal--opened')
+
+			isModalOpened = true
 		}
 		if (e.target.closest('.website-modal__cross') || e.target.closest('.modal-overlay')) {
 			$websiteModal.classList.remove('modal--opened')
 			$websiteModalOverlay.classList.remove('modal--opened')
+
+			setTimeout(() => {
+				clearWebsiteModal($websiteModal)
+				isModalOpened = false
+			}, 300)
 		}
 	})
-}
+	document.addEventListener('keydown', (e) => {
+		if (isModalOpened && (e.code === `Escape` || e.keyCode === `27`)) {
+			$websiteModal.classList.remove('modal--opened')
+			$websiteModalOverlay.classList.remove('modal--opened')
 
-// ===
-if (window.location.pathname === '/') {
-	console.log('Вы на главной')
-} else if (window.location.pathname.includes('/page-portfolio.html')) {
-	console.log('Вы на странице портфолио')
+			setTimeout(() => {
+				clearWebsiteModal($websiteModal)
+				isModalOpened = false
+			}, 300)
+		}
+	})
 }
 
 function renderWebsiteModal(websiteInfo, modal) {
@@ -82,21 +98,23 @@ function renderWebsiteModal(websiteInfo, modal) {
 		const $modalTitle = modal.querySelector('.website-modal__title')
 		const $modalCategory = modal.querySelector('.website-modal__category')
 		const $modalDescription = modal.querySelector('.website-modal__descr')
+		const $modalUI = modal.querySelector('.website-modal__ui')
 		const $modalTechnologies = modal.querySelector('.website-modal__technologies')
-		const $modalPages = modal.querySelector('.website-modal__pages')
+		const $modalPagesQuantity = modal.querySelector('.website-modal__quantity')
 		const $modalPagesList = modal.querySelector('.website-modal__list')
 		const $modalImage = modal.querySelector('.website-modal__img')
 
-		$modalTitle.textContent = websiteInfo.title
-		$modalCategory.textContent = websiteInfo.category
-		$modalDescription.textContent = websiteInfo.description
-		$modalTechnologies.textContent = websiteInfo.technologies
-		$modalPages.insertAdjacentText('afterbegin', `Количество страниц - ${websiteInfo.pages.length}`)
-		$modalPagesList.innerHTML = getPagesListHTML(websiteInfo.pages)
+		$modalTitle.insertAdjacentHTML('afterbegin', websiteInfo.title)
+		$modalCategory.insertAdjacentHTML('afterbegin', websiteInfo.category)
+		$modalDescription.insertAdjacentHTML('afterbegin', websiteInfo.description)
+		$modalUI.insertAdjacentHTML('afterbegin', websiteInfo.ui)
+		$modalTechnologies.insertAdjacentHTML('afterbegin', websiteInfo.technologies)
+		$modalPagesQuantity.textContent = `Количество страниц - ${websiteInfo.pages.length}`
+		$modalPagesList.insertAdjacentHTML('afterbegin', getPagesListHTML(websiteInfo.pages))
 		$modalImage.setAttribute('src', `images/websites/${websiteInfo.image}`)
 		$modalImage.setAttribute('alt', `${websiteInfo.image}`)
 	} catch (error) {
-		alert(error)
+		console.log(error)
 	}
 
 	function getPagesListHTML(linksInfo) {
@@ -112,4 +130,34 @@ function renderWebsiteModal(websiteInfo, modal) {
 	}
 }
 
-renderWebsiteModal(websitesData.smartShop, $websiteModal)
+function clearWebsiteModal(modal) {
+	try {
+		const $modalTitle = modal.querySelector('.website-modal__title')
+		const $modalCategory = modal.querySelector('.website-modal__category')
+		const $modalDescription = modal.querySelector('.website-modal__descr')
+		const $modalUI = modal.querySelector('.website-modal__ui')
+		const $modalTechnologies = modal.querySelector('.website-modal__technologies')
+		const $modalPagesQuantity = modal.querySelector('.website-modal__quantity')
+		const $modalPagesList = modal.querySelector('.website-modal__list')
+		const $modalImage = modal.querySelector('.website-modal__img')
+
+		$modalTitle.innerHTML = ''
+		$modalCategory.innerHTML = ''
+		$modalDescription.innerHTML = ''
+		$modalUI.innerHTML = ''
+		$modalTechnologies.innerHTML = ''
+		$modalPagesQuantity.innerHTML = ''
+		$modalPagesList.innerHTML = ''
+		$modalImage.setAttribute('src', ``)
+		$modalImage.setAttribute('alt', ``)
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+// ===
+if (window.location.pathname === '/') {
+	console.log('Вы на главной')
+} else if (window.location.pathname.includes('/page-portfolio.html')) {
+	console.log('Вы на странице портфолио')
+}

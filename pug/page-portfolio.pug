@@ -7,6 +7,7 @@ html(lang="ru")
 		include utils/fonts
 		title Портфолио
 	body
+		include components/header
 		main
 			.container
 				section.portfolio
@@ -17,26 +18,24 @@ html(lang="ru")
 								.portfolio-item__title Интернет-магазин техники Smart Shop
 								img.portfolio-item__img(src="@img/websites/smart-shop.png", alt="smart-shop")
 								span.portfolio-item__span Подробнее
-							.portfolio__item.portfolio-item
+							.portfolio__item.portfolio-item(data-website-id="ritmStyle")
 								.portfolio-item__title Корпоративный сайт акватерапии RitmStyle
 								img.portfolio-item__img(src="@img/websites/RitmStyle.png", alt="RitmStyle")
 								span.portfolio-item__span Подробнее
-							.portfolio__item.portfolio-item
+							.portfolio__item.portfolio-item(data-website-id="nftsEvolved")
 								.portfolio-item__title Лэндинг для NTF-компании
 								img.portfolio-item__img(src="@img/websites/NFT.png", alt="NFT")
 								span.portfolio-item__span Подробнее
-							.portfolio__item.portfolio-item
+							.portfolio__item.portfolio-item(data-website-id="hockey")
 								.portfolio-item__title Корпоративный сайт для хоккейного клуба
 								img.portfolio-item__img(src="@img/websites/hockey.png", alt="hockey")
 								span.portfolio-item__span Подробнее
-							.portfolio__item.portfolio-item
+							.portfolio__item.portfolio-item(data-website-id="advision")
 								.portfolio-item__title Корпоративный сайт компании Advision
 								img.portfolio-item__img(src="@img/websites/advision-website.png", alt="advision")
 								span.portfolio-item__span Подробнее
 				
 		include components/website-modal
-
-		//- include components/header
 
 		//- include components/footer
 		include utils/scripts

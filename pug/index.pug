@@ -11,12 +11,14 @@ html(lang="ru")
 		main.wrapper.scroll-3d
 			.slider
 				section.slider__frame.slide
-					.slide__content.slide__content--grid-rows
-						h1.slide__title Здравствуйте. #[br] Меня зовут Сергей, и это мой сайт-портфолио.
+					.slide__content
+						h1.slide__title Здравствуйте. #[br] Меня зовут Сергей, и это мой сайт&nbsp;-&nbsp;визитка.
 				section.slider__frame.slide
 					.slide__content.slide__content--grid-cols
 						img.slide__image(src="@img/photo.png", alt="Фото Сергея")
-						h2.slide__subtitle Больше года назад я выбрал путь фронтенд разработчика.
+						h2.slide__subtitle 
+							p Почти два года назад я выбрал путь фронтенд разработчика.
+							p Сейчас же я могу гарантировать каждому своему клиенту быстрое и качественное выполнение заказа.
 				section.slider__frame.slide
 					.slide__content.slide__content--grid-rows
 						h2.slide__subtitle Что я могу вам предложить?
@@ -24,23 +26,33 @@ html(lang="ru")
 							.slide__cards-col
 								article.slide__card.card.ac
 									h3.card__title.ac-header.ac-trigger Выполнение заказа в срок
-									p.card__text.ac-panel Если я не успею сдать заказ в срок, то за каждый день после дедлайна буду делать скидку на 1000 рублей. Для вас это гарантия, а для меня мотивация. 
+									.ac-panel
+										p.card__text Если я не успею сдать заказ в срок, то за каждый день после дедлайна буду делать скидку на 1000 рублей. Для вас это гарантия, а для меня мотивация. 
 								article.slide__card.card.ac
 									h3.card__title.ac-header.ac-trigger Надежная верстка
-									p.card__text.ac-panel Верстка будет готова к изменению контента, не важно, больше его станет или меньше, будет изображение в посте или нет, не важен и размер изображения. Верстка не сломается и будет вести себя адекватно.
+									.ac-panel
+										p.card__text Верстка будет готова к изменению контента, не важно, больше его станет или меньше, будет изображение в посте или нет, не важен и размер изображения. Верстка не сломается и будет вести себя адекватно.
 								article.slide__card.card.ac
 									h3.card__title.ac-header.ac-trigger Оптимизация
-									p.card__text.ac-panel Вебсайт будет максимально оптимизирован для быстрой загрузки: исходные файлы, изображения, шрифты и т.д. будут сжаты. Зеленая зона PageSpeed Insights.
+									.ac-panel
+										p.card__text Вебсайт будет максимально оптимизирован для быстрой загрузки: исходные файлы, изображения, шрифты и т.д. будут сжаты. Зеленая зона PageSpeed Insights.
+								article.slide__card.card.ac
+									h3.card__title.ac-header.ac-trigger Лояльность к макету
+									.ac-panel
+										p.card__text Могу работать с любыми макетами: если нет версий для телефонов и планшетов - сделаю их сам, подготовлю изображения, переведу иконки в вектор, если они в .png формате и т.д.
 							.slide__cards-col
 								article.slide__card.card.ac
 									h3.card__title.ac-header.ac-trigger Справедливая цена
-									p.card__text.ac-panel Цена на ваш заказ будет соответствовать уровню моих услуг. Я не буду искусственно завышать цену или сильно занижать ее, чтобы получить заказ. Я уважаю как клиента, так и свое время. 
+									.ac-panel
+										p.card__text Цена на ваш заказ будет соответствовать уровню моих услуг. Я не буду искусственно завышать цену или сильно занижать ее, чтобы получить заказ. Я уважаю как клиента, так и свое время. 
 								article.slide__card.card.ac
 									h3.card__title.ac-header.ac-trigger Адаптивность и кроссбраузерность
-									p.card__text.ac-panel Ваш сайт будет одинаково выглядеть в любом браузере и правильно адаптироваться под все виды устройств.
+									.ac-panel
+										p.card__text Ваш сайт будет одинаково выглядеть в любом браузере и правильно адаптироваться под все виды устройств.
 								article.slide__card.card.ac
 									h3.card__title.ac-header.ac-trigger Работаю каждый день
-									p.card__text.ac-panel Во время выполнения заказа я работаю без выходных. Благодаря этому ваш заказ будет выполнен максимально быстро. Также вы сможете каждый день наблюдать за прогрессом, сразу же вносить правки, если они будут.
+									.ac-panel
+										p.card__text Во время выполнения заказа я работаю без выходных. Благодаря этому ваш заказ будет выполнен максимально быстро. Также вы сможете каждый день наблюдать за прогрессом, сразу же вносить правки, если они будут.
 				section.slider__frame.slide
 					.slide__content.slide__content--grid-rows
 						h2.slide__subtitle Технологии, которые я использую в работе:
@@ -89,16 +101,9 @@ html(lang="ru")
 								img.card-technology__image(src="@img/technologies/Git.png", alt="GIT logo")
 				section.slider__frame.slide
 					.slide__content.slide__content--grid-rows
-						h2.slide__subtitle Технологии, которые я использую в работе:
-						.slide__websites
-							.slide__website.card-website
-								h3.card-website__title HTML 5
-
-							
-								
+						h2.slide__subtitle Контактная форма
 				
 		//- include components/header
 
 		//- include components/footer
-		script(src='js/')
 		include utils/scripts

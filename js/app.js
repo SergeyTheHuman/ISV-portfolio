@@ -6,9 +6,26 @@ import { websitesData } from './websites/websites-data.js'
 
 isWebp()
 
-// Accordions init
+// Accordions
 const $cardsCols = document.querySelectorAll('.slide__cards-col')
 
+// "Bubbles"
+const $technologyCards = document.querySelectorAll('.card-technology')
+let borderRadiusProps = []
+let borderRadiusPropsInvert = []
+
+// Modals
+const $websiteCards = document.querySelectorAll('.portfolio__item')
+const $websiteModal = document.querySelector('.website-modal')
+const $websiteModalOverlay = document.querySelector('.modal-overlay')
+let isModalOpened = false
+
+// Header small
+const $headerSmallNav = document.querySelector('.header-small__nav')
+const $headerSmallLogo = document.querySelector('.header-small__logo')
+
+
+// Accordions init ======= START
 if ($cardsCols) {
 	$cardsCols.forEach((el) => {
 		const accordion = new Accordion(el, {
@@ -17,13 +34,10 @@ if ($cardsCols) {
 		})
 	})
 }
+// Accordions init ======= END
 
-// "Bubbles" logic
-const $technologyCards = document.querySelectorAll('.card-technology')
 
-let borderRadiusProps = []
-let borderRadiusPropsInvert = []
-
+// "Bubbles" logic ======= START
 function getRandomBorderRadius(el) {
 	let borderRadiusValues = []
 	for (let i = 0; i < 8; i++) {
@@ -40,7 +54,7 @@ function getRandomBorderRadius(el) {
 	el.style.cssText = borderRadius
 }
 
-if ($technologyCards) {
+if ($technologyCards && window.innerWidth > 1023) {
 	$technologyCards.forEach((el, idx) => {
 		getRandomBorderRadius(el)
 		el.addEventListener('mouseenter', () => {
@@ -51,19 +65,13 @@ if ($technologyCards) {
 		})
 	})
 }
+// "Bubbles" logic ======= END
 
-const $websiteCards = document.querySelectorAll('.portfolio__item')
-const $websiteModal = document.querySelector('.website-modal')
-const $websiteModalOverlay = document.querySelector('.modal-overlay')
 
-const $headerSmallNav = document.querySelector('.header-small__nav')
-const $headerSmallLogo = document.querySelector('.header-small__logo')
-
-if ($websiteCards && $websiteModal) {
-	let isModalOpened = false
-
-	document.addEventListener('click', (e) => {
-		// modals logic on portfolio page
+document.addEventListener('click', (e) => {
+	console.log(e.target)
+	// Modals logic on portfolio page  ======= START
+	if ($websiteCards && $websiteModal) {
 		if (e.target.closest('.portfolio__item') && !isModalOpened) {
 			const card = e.target.closest('.portfolio__item')
 			const cardWebsite = card.getAttribute('data-website-id')
@@ -83,27 +91,20 @@ if ($websiteCards && $websiteModal) {
 				isModalOpened = false
 			}, 300)
 		}
+	}
+	// Modals logic on portfolio page  ======= END
 
-		// header small logic
 
-		if (e.target.closest('.header-small__logo')) {
-			$headerSmallNav.classList.toggle('opened')
-			$headerSmallLogo.classList.toggle('opened')
-		}
-	})
-	document.addEventListener('keydown', (e) => {
-		if (isModalOpened && (e.code === `Escape` || e.keyCode === `27`)) {
-			$websiteModal.classList.remove('modal--opened')
-			$websiteModalOverlay.classList.remove('modal--opened')
+	// Header small logic ======= START
+	if (e.target.closest('.header-small__logo')) {
+		$headerSmallNav.classList.toggle('opened')
+		$headerSmallLogo.classList.toggle('opened')
+	}
+	// Header small logic ======= START
+})
 
-			setTimeout(() => {
-				clearWebsiteModal($websiteModal)
-				isModalOpened = false
-			}, 300)
-		}
-	})
-}
 
+// Modals logic on portfolio page  ======= START
 function renderWebsiteModal(websiteInfo, modal) {
 	try {
 		const $modalTitle = modal.querySelector('.website-modal__title')
@@ -165,6 +166,23 @@ function clearWebsiteModal(modal) {
 		console.log(error)
 	}
 }
+
+if ($websiteCards && $websiteModal) {
+	document.addEventListener('keydown', (e) => {
+		if (isModalOpened && (e.code === `Escape` || e.keyCode === `27`)) {
+			$websiteModal.classList.remove('modal--opened')
+			$websiteModalOverlay.classList.remove('modal--opened')
+
+			setTimeout(() => {
+				clearWebsiteModal($websiteModal)
+				isModalOpened = false
+			}, 300)
+		}
+	})
+}
+// Modals logic on portfolio page  ======= END
+
+
 
 // ===
 if (window.location.pathname === '/') {

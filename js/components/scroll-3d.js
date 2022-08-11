@@ -1,7 +1,13 @@
 import { throttle } from '../utils/utils.js'
 
+function isMobile() {
+	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)
+}
+
 if (window.location.pathname === '/') {
 	document.addEventListener('DOMContentLoaded', () => {
+		if (window.innerWidth < 1024) return
+		// if (window.innerWidth < 1024 || isMobile()) return
 		const $frames = Array.from(document.querySelectorAll('.slider__frame'))
 		const $html = document.querySelector('html')
 
@@ -12,9 +18,9 @@ if (window.location.pathname === '/') {
 
 		const bodyHeight = ($frames.length - 1) * Math.abs(zSpacing)
 
-		function resetScrollAfterReload(params) {
+		function resetScrollAfterReload() {
 			setTimeout(() => {
-				window.scrollTo(0, 0)
+				window.scrollTo(0, bodyHeight / 2)
 			}, 200)
 		}
 
@@ -46,6 +52,7 @@ if (window.location.pathname === '/') {
 		initFramesZPositions()
 
 		window.addEventListener('scroll', () => {
+			console.log(window.scrollY)
 			let top = document.documentElement.scrollTop
 			let delta = lastPosition - top
 
@@ -56,7 +63,12 @@ if (window.location.pathname === '/') {
 
 		const throttledChangeFrame = throttle(changeFrame, transition)
 
+		let isReloaded = true
 		function changeFrame(delta) {
+			if (isReloaded) {
+				isReloaded = false
+				return
+			}
 			if (delta === 0) return
 			if (zValues[0] === 0 && delta > 0) return
 			if (zValues[zValues.length - 1] === 0 && delta < 0) return

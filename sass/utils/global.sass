@@ -64,10 +64,11 @@ body
 	line-height: var(--line-height)
 	letter-spacing: 2px
 
-body.scroll-3d
-	scrollbar-width: none
-body.scroll-3d::-webkit-scrollbar
-	display: none
+@media screen and ( min-width: 1023.98px )
+	body.scroll-3d
+		scrollbar-width: none
+	body.scroll-3d::-webkit-scrollbar
+		display: none
 
 .container
 	@include container(var(--container))

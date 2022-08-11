@@ -52,14 +52,18 @@ if ($technologyCards) {
 	})
 }
 
-// modals logic on portfolio page
 const $websiteCards = document.querySelectorAll('.portfolio__item')
 const $websiteModal = document.querySelector('.website-modal')
 const $websiteModalOverlay = document.querySelector('.modal-overlay')
+
+const $headerSmallNav = document.querySelector('.header-small__nav')
+const $headerSmallLogo = document.querySelector('.header-small__logo')
+
 if ($websiteCards && $websiteModal) {
 	let isModalOpened = false
 
 	document.addEventListener('click', (e) => {
+		// modals logic on portfolio page
 		if (e.target.closest('.portfolio__item') && !isModalOpened) {
 			const card = e.target.closest('.portfolio__item')
 			const cardWebsite = card.getAttribute('data-website-id')
@@ -78,6 +82,13 @@ if ($websiteCards && $websiteModal) {
 				clearWebsiteModal($websiteModal)
 				isModalOpened = false
 			}, 300)
+		}
+
+		// header small logic
+
+		if (e.target.closest('.header-small__logo')) {
+			$headerSmallNav.classList.toggle('opened')
+			$headerSmallLogo.classList.toggle('opened')
 		}
 	})
 	document.addEventListener('keydown', (e) => {

@@ -2,7 +2,12 @@
 	position: fixed
 	top: 30px
 	right: 30px
-	z-index: 1
+	z-index: 5
+	@media screen and ( max-width: 1200px )
+		top: 15px
+		right: 15px
+	@media screen and ( max-width: 1023.98px )
+		display: none
 	&__nav
 		position: absolute
 		top: 0
@@ -43,12 +48,21 @@
 		&:first-child
 			top: 20px
 			left: 10px
+			@media screen and ( max-width: 1200px )
+				top: 0px
+				left: 35px
 		&:nth-child(2)
 			top: 100px
 			left: 30px
+			@media screen and ( max-width: 1200px )
+				top: 55px
+				left: 55px
 		&:last-child
 			top: 140px
 			left: 130px
+			@media screen and ( max-width: 1200px )
+				top: 90px
+				left: 120px
 		@media screen and ( any-hover: hover )
 			&:hover
 				&::before
@@ -60,6 +74,7 @@
 					opacity: 1
 					transform: translateX(0%)
 	&__link
+		font-size: clamp(12px, 0.75rem, 18px)
 		height: 100%
 		display: flex
 		align-items: center
@@ -77,6 +92,9 @@
 		position: absolute
 		top: 195px
 		right: 5px
+		@media screen and ( max-width: 1200px )
+			top: 140px
+			right: 0px
 		span
 			animation: help-text 6s ease 0s infinite
 		svg
@@ -108,6 +126,9 @@
 			width: 100px
 			height: 100px
 			transition: transform 0.3s ease, opacity 0.3s ease
+			@media screen and ( max-width: 1200px )
+				width: 60px
+				height: 60px
 		.star,
 		.leaf--1,
 		.leaf--2,

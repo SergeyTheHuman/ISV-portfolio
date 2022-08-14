@@ -1,5 +1,6 @@
 import { isWebp } from './utils/isWebp.js'
 import './components/scroll-3d.js'
+import './components/treasure-map.js'
 import Accordion from 'accordion-js'
 import { getRandomInteger } from './utils/utils.js'
 import { websitesData } from './websites/websites-data.js'
@@ -24,7 +25,6 @@ let isModalOpened = false
 const $headerSmallNav = document.querySelector('.header-small__nav')
 const $headerSmallLogo = document.querySelector('.header-small__logo')
 
-
 // Accordions init ======= START
 if ($cardsCols) {
 	$cardsCols.forEach((el) => {
@@ -35,7 +35,6 @@ if ($cardsCols) {
 	})
 }
 // Accordions init ======= END
-
 
 // "Bubbles" logic ======= START
 function getRandomBorderRadius(el) {
@@ -67,7 +66,6 @@ if ($technologyCards && window.innerWidth > 1023) {
 }
 // "Bubbles" logic ======= END
 
-
 document.addEventListener('click', (e) => {
 	console.log(e.target)
 	// Modals logic on portfolio page  ======= START
@@ -94,7 +92,6 @@ document.addEventListener('click', (e) => {
 	}
 	// Modals logic on portfolio page  ======= END
 
-
 	// Header small logic ======= START
 	if (e.target.closest('.header-small__logo')) {
 		$headerSmallNav.classList.toggle('opened')
@@ -102,7 +99,6 @@ document.addEventListener('click', (e) => {
 	}
 	// Header small logic ======= START
 })
-
 
 // Modals logic on portfolio page  ======= START
 function renderWebsiteModal(websiteInfo, modal) {
@@ -181,8 +177,6 @@ if ($websiteCards && $websiteModal) {
 	})
 }
 // Modals logic on portfolio page  ======= END
-
-
 
 // ===
 if (window.location.pathname === '/') {

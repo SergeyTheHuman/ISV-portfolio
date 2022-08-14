@@ -52,7 +52,6 @@ if (window.location.pathname === '/') {
 		initFramesZPositions()
 
 		window.addEventListener('scroll', () => {
-			console.log(window.scrollY)
 			let top = document.documentElement.scrollTop
 			let delta = lastPosition - top
 

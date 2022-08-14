@@ -9,17 +9,63 @@ html(lang="ru")
 	body
 		include components/header
 		//- main
-		section.about
-			.about__frame.about__frame--1
-				h1.slide__title.about__title Обо мне 1111111111111111111111111111111
-			.about__frame.about__frame--2
-				h1.slide__title.about__title Обо мне 2222222222222222222222222222222
-			.about__frame.about__frame--3
-				h1.slide__title.about__title Обо мне 3333333333333333333333333333333
-			.about__frame.about__frame--4
-				h1.slide__title.about__title Обо мне 4444444444444444444444444444444
-			.about__frame.about__frame--5
-				h1.slide__title.about__title Обо мне 5555555555555555555555555555555
+		.about
+			section.about__frame.about__frame--1.about__greetings.about-greetings
+				.about__frame-trigger
+				.about__frame-content
+					h1.slide__title.about__title На этой странице вы можете узнать обо мне чуть больше.
+					p.about__text.about-greetings__text Я поделюсь забавными фактами, фотографиями и, может, историями.
+					p.about__text.about-greetings__text В общем, расслабьтесь.
+			section.about__frame.about__frame--2.about__coffee.about-coffee
+				.about__frame-trigger
+				.about__frame-content
+					h1.slide__title.about__title Когда-то я работал в кофейне. 
+					.about-coffee__content
+						p.about__text.about-coffee__text Начинал с обычного бариста, затем вырос до старшего, после чего и до шеф-бариста.
+						p.about__text.about-coffee__text Это было интересное время, много новых знакомств, тяжелая, но увлекательная работа.
+						p.about__text.about-coffee__text Сначала учился хорошо работать с людьми, сфера услуг все-таки, затем на посту шефа обучался управлению командой, что, признаюсь, оказалось весьма трудной задачей в первое время.
+					.about-coffee__images 
+						img.about-coffee__img(src="@img/coffee/heart.jpg", alt="heart")
+						img.about-coffee__img(src="@img/coffee/rosetta.jpg", alt="rosetta")
+						img.about-coffee__img(src="@img/coffee/swan.jpg", alt="swan")
+						img.about-coffee__img(src="@img/coffee/tulip.jpg", alt="tulip")
+						p.about-coffee__img-caption А это мои латтэ-арты
+			section.about__frame.about__frame--3.about__dreads.about-dreads
+				.about__frame-trigger
+				.about__frame-content
+					h1.slide__title.about__title Примерно в тот же промежуток времени решил поэксперементировать с волосами
+					.about-dreads__images 
+						img.about-dreads__img(src="@img/dreads/dreads-photo-1.jpg", alt="photo with dreads")
+						img.about-dreads__img(src="@img/dreads/dreads-photo-2.jpg", alt="photo with dreads")
+					.about-dreads__content
+						p.about__text.about-dreads__text Сделал себе дреды. Всегда было интересно, каково ходить с подобной прической.
+						p.about__text.about-dreads__text Заплетать их чертовски больно, долго и дорого. Мне обошлось 8 тяжелых часов и некоторое количество нервных клеток.
+						p.about__text.about-dreads__text Как ни странно, но эта прическа весьма комфортная. Интересный опыт, не пожалел об этом. Правда, хватило меня на полгода, затем надоело.
+			section.about__frame.about__frame--4.about__facts.about-facts
+				.about__frame-trigger
+				.about__frame-content
+					h1.slide__title.about__title Просто несколько интересных фактов и моих наблюдений
+					ol.about-facts__list
+						li.about-facts__li Не могу жить без кофе. Ни один день не обходится без пары кружек.
+						li.about-facts__li В 2021 году понравился настольный теннис, с тех пор играю минимум раз в неделю. Позволю себе похвастаться: играю я неплохо.
+						li.about-facts__li Мой родной город - Норильск. Холодно, темно, грязно. Но своя атмосфера у него есть.
+						li.about-facts__li Учился в университете по специальности "информационные системы и программирование". Закончил 2 курса, затем ушел. В том возрасте в моей голове творилось что-то странное.
+						li.about-facts__li У меня есть девушка. Зовут Александа. Вместе больше 4 лет. Местами бывает неудобно, но у совместной жизни есть свои плюсы.
+						li.about-facts__li Иногда занимаюсь медитацией. Помогает разгрузить голову и привести мозги в порядок.
+			section.about__frame.about__frame--5.about__thanks.about-thanks
+				.about__frame-trigger
+				.about__frame-content
+					h1.slide__title.about__title Спасибо, что уделили время! Надеюсь, это было интересно.
+					.about-thanks__links 
+						p.about__text.about-thanks__text Отсюда вы можете перейти на другие страницы:
+						nav.about-thanks__nav
+							ul.about-thanks__ul
+								li.about-thanks__li
+									a.about-thanks__link(href="/") Главная
+								li.about-thanks__li
+									a.about-thanks__link(href="./page-portfolio.html") Портфолио
+								li.about-thanks__li
+									a.about-thanks__link(href="./page-about.html") Обо мне
 				
 		include components/website-modal
 

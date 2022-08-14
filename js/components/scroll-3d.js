@@ -6,8 +6,8 @@ function isMobile() {
 
 if (window.location.pathname === '/') {
 	document.addEventListener('DOMContentLoaded', () => {
-		if (window.innerWidth < 1024) return
-		// if (window.innerWidth < 1024 || isMobile()) return
+		// if (window.innerWidth < 1024) return
+		if (window.innerWidth < 1024 || isMobile()) return
 		const $frames = Array.from(document.querySelectorAll('.slider__frame'))
 		const $html = document.querySelector('html')
 

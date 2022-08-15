@@ -7,6 +7,15 @@
 	left: 0
 	transform: translate(-2300px, -500px)
 	background-color: var(--color-black)
+	@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+		max-width: 1600px
+		margin: 0 auto
+		border-radius: 0
+		width: unset
+		height: unset
+		position: static
+		transform: none
+		margin-top: 5rem
 	&.border
 		box-shadow: 0px 0px 30px 15px rgba(97, 97, 97, 0.35) inset
 	&.animation
@@ -19,8 +28,40 @@
 		display: flex
 		justify-content: center
 		align-items: center
+		@media screen and ( max-width: 1400px )
+			max-width: 900px
+		@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+			position: relative
+			max-width: unset
+			min-height: unset
+			&:not(:last-child)
+				margin-bottom: 140px
+				&::after,
+				&::before
+					content: ''
+					position: absolute
+					left: 50%
+					height: 3px
+					background-image: linear-gradient(90deg, transparent, var(--color-white), transparent)
+					transform: translateX(-50%)
+					opacity: .4
+				&::before
+					width: 60%
+					bottom: -80px
+				&::after
+					width: 85%
+					bottom: -60px
+		@media screen and ( max-width: 600px )
+			&:not(:last-child)
+				margin-bottom: 80px
+				&::after,
+				&::before
+					height: 2px
+				&::before
+					bottom: -50px
+				&::after
+					bottom: -40px
 		&.show
-
 			.about__frame-trigger
 				opacity: 0
 				visibility: hidden
@@ -41,6 +82,11 @@
 			pointer-events: none
 			transition: all 0.3s ease
 			transition-delay: 0s
+			@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+				max-width: 90%
+				opacity: 1
+				visibility: visible
+				pointer-events: unset
 		&-trigger
 			position: absolute
 			top: 50%
@@ -53,6 +99,8 @@
 			background-color: var(--color-dark-gray)
 			opacity: .5
 			transition: all 0.3s ease
+			@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+				display: none
 		&--1
 			top: 0%
 			left: 0%
@@ -68,13 +116,26 @@
 		&--5
 			top: 1600px
 			left: 600px
+		&--1,
+		&--2,
+		&--3,
+		&--4,
+		&--5
+			@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+				top: unset
+				left: unset
 	&__title
 		max-width: 60%
 		font-size: clamp(16px, 2.5rem, 32px)
 		margin-bottom: 30px
+		@media screen and ( max-width: 1023.98px )
+			max-width: 100%
+		@media screen and ( max-width: 480px )
+			font-size: 22px !important
 	&__text
 		font-size: clamp(14px, 2rem, 24px)
 		font-weight: 100
+		text-align: center
 		&:not(:last-child)
 			margin-bottom: 15px
 
@@ -83,36 +144,62 @@
 		right: -70px
 		bottom: -100px
 		transform: rotate(26deg) translateY(-40%)
+		@media screen and ( max-width: 1400px )
+			right: -200px
+			bottom: -100px
 	.about__frame-content
 		flex-direction: column
+	.about__title
+		@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+			font-size: clamp(18px, 3rem, 32px)
+	&__text
+		@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+			max-width: 80%
+			font-size: clamp(16px, 2.25rem, 28px)
 
 .about-coffee
 	.portfolio-arrow
-		right: -200px
+		right: -230px
 		top: 280px
 		transform: rotate(-5deg) translateY(-40%)
+		@media screen and ( max-width: 1400px )
+			right: -280px
 	.about__frame-content
 		display: grid
 		grid-template-columns: repeat(2, 1fr)
 		grid-template-rows: auto 1fr
 		gap: 25px
+		@media screen and ( max-width: 1400px )
+			grid-template-columns: 5fr 3fr
+		@media screen and ( max-width: 1023.98px )
+			display: block
 	.about__title
 		margin-bottom: 0
 		align-self: center
 		grid-column: 1 / -1
+		@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+			margin-bottom: 40px
 	&__content
 		height: 100%
 		display: flex
 		flex-direction: column
 		justify-content: center
+		@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+			margin-bottom: 30px
 	&__text
+		text-align: left
+		@media screen and ( max-width: 1400px )
+			font-size: 18px
 		&:not(:last-child)
 			margin-bottom: clamp(14px, 2rem, 24px)
 	&__images
 		display: grid
 		grid-template-columns: repeat(2, 1fr)
-		grid-template-rows: 1fr 1fr auto
+		grid-template-rows: repeat(2, 1fr)
+		grid-auto-rows: auto
 		gap: 25px
+		@media screen and ( max-width: 1400px )
+			gap: 10px
 	&__img
 		width: 100%
 		height: 250px
@@ -120,6 +207,12 @@
 		object-position: center
 		border-radius: 20px
 		position: relative
+		@media screen and ( max-width: 1400px )
+			height: 150px
+		@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+			grid-template-rows: repeat(2, minmax(300px, 500px))
+			height: 100%
+			max-height: 100%
 	&__img-caption
 		text-align: center
 		font-size: clamp(12px, 1.5rem, 18px)
@@ -128,33 +221,70 @@
 
 .about-dreads
 	.portfolio-arrow
+		transform: rotate(105deg) translateX(-50%)
 		left: 40px
 		bottom: -550px
-		transform: rotate(105deg) translateX(-50%)
+		@media screen and ( max-width: 1400px )
+			left: -120px
+			bottom: -550px
 	.about__frame-content
 		display: grid
 		grid-template-columns: 3fr 2fr
 		grid-template-rows: auto 1fr
 		gap: 25px
+		@media screen and ( max-width: 1400px )
+			grid-template-columns: 1fr 3fr
+		@media screen and ( max-width: 600px )
+			display: block
 	.about__title
 		margin-bottom: 0
 		align-self: center
 		grid-column: 1 / -1
+		@media screen and ( max-width: 1400px )
+			font-size: 28px
+			max-width: 90%
+		@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+			margin-bottom: 40px
+			font-size: clamp(16px, 2.5rem, 32px)
+	&__text
+		text-align: left
+		@media screen and ( max-width: 1400px )
+			font-size: 22px
+		@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+			font-size: clamp(14px, 2rem, 24px)
 	&__images
 		display: grid
 		grid-template-columns: repeat(2, 1fr)
 		gap: 10px
+		@media screen and ( max-width: 1400px )
+			grid-template-columns: 1fr
+		@media screen and ( max-width: 600px )
+			margin-bottom: 30px
+			grid-template-columns: repeat(2, 1fr)
 	&__img
 		width: 100%
 		height: 100%
 		object-fit: cover
 		border-radius: 20px
+		@media screen and ( max-width: 1400px )
+			max-height: 200px
+			object-position: top
+		@media screen and ( max-width: 600px )
+			max-height: 400px
 
 .about-facts
 	.portfolio-arrow
-		left: -600px
-		bottom: 150px
+		left: -550px
+		bottom: 160px
 		transform: rotate(180deg) translateX(-50%)
+		@media screen and ( max-width: 1400px )
+			left: -650px
+			bottom: 180px
+	.about__title
+		@media screen and ( max-width: 1400px )
+			font-size: 24px
+		@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+			margin-bottom: 40px
 	.about__frame-content
 		display: block
 	&__list
@@ -163,15 +293,32 @@
 		font-weight: 100
 		margin-bottom: clamp(15px, 2rem, 40px)
 		background-image: url('@img/logo-white.png')
-		background-position: left center
+		background-position: left 7px
 		background-size: 30px
 		background-repeat: no-repeat
 		padding-left: 50px
+		min-height: 50px
+		display: flex
+		align-items: center
+		@media screen and ( max-width: 1400px )
+			font-size: 18px
+		@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+			font-size: clamp(14px, 2rem, 24px)
+		@media screen and ( max-width: 480px )
+			background-position: left 2px
+			padding-left: 30px
+			background-size: 20px
+			min-height: 30px
 		&:not(:last-child)
 			margin-bottom: 20px
+			@media screen and ( max-width: 1400px )
+				margin-bottom: 10px
 
 .about-thanks
 	min-height: 650px
+	@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+		min-height: unset
+		padding-bottom: clamp(60px, 1rem, 100px)
 	.about__frame-content
 		flex-direction: column
 	&__ul
@@ -229,6 +376,9 @@ img
 	opacity: 0
 	&.arrow-animation
 		animation: portfolio-arrow 5s ease 0.5s infinite
+	@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+		display: none
+
 @keyframes portfolio-arrow
 	0%
 		opacity: 0

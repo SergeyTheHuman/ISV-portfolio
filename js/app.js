@@ -119,8 +119,12 @@ function renderWebsiteModal(websiteInfo, modal) {
 		$modalTechnologies.insertAdjacentHTML('afterbegin', websiteInfo.technologies)
 		$modalPagesQuantity.textContent = `Количество страниц - ${websiteInfo.pages.length}`
 		$modalPagesList.insertAdjacentHTML('afterbegin', getPagesListHTML(websiteInfo.pages))
-		$modalImage.setAttribute('src', `images/websites/${websiteInfo.image}`)
-		$modalImage.setAttribute('alt', `${websiteInfo.image}`)
+		if (document.querySelector('html').classList.contains('webp')) {
+			$modalImage.setAttribute('src', `images/websites/${websiteInfo.image.split('.')[0]}.webp`)
+		} else {
+			$modalImage.setAttribute('src', `images/websites/${websiteInfo.image}`)
+		}
+		$modalImage.setAttribute('alt', `${websiteInfo.image.split('.')[0]}`)
 	} catch (error) {
 		console.log(error)
 	}

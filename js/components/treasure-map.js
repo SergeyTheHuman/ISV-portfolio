@@ -5,6 +5,8 @@ function isMobile() {
 const $sectionAbout = document.querySelector('.about')
 
 if (window.location.pathname === '/page-about.html' && !isMobile() && window.innerWidth > 1023.98 && $sectionAbout) {
+	const $frames = document.querySelectorAll('.about__frame')
+
 	let aboutWidth = $sectionAbout.offsetWidth
 	let aboutHeight = $sectionAbout.offsetHeight
 
@@ -32,9 +34,8 @@ if (window.location.pathname === '/page-about.html' && !isMobile() && window.inn
 
 		mouseXVelocity = Math.abs(mouseX / window.innerWidth)
 		mouseYVelocity = Math.abs(mouseY / window.innerHeight)
-
-		const $frames = document.querySelector('.about__frame')
 	})
+
 	document.addEventListener('mouseover', (e) => {
 		e.target.closest('.about__frame-trigger')
 		if (e.target.closest('.about__frame-trigger')) {

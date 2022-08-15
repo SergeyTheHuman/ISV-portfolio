@@ -1,9 +1,9 @@
 body.scroll-3d
 	height: var(--body-height)
-	@media screen and ( max-width: 1023.98px )
+	@media screen and ( max-width: 1023.98px ), ( any-hover: none )
 		height: 100%
 
-@media screen and ( min-width: 1023.98px )
+@media screen and ( min-width: 1023.98px ) and ( any-hover: hover )
 	.wrapper.scroll-3d
 		position: fixed
 		perspective: 1500px
@@ -21,13 +21,15 @@ body.scroll-3d
 .slider
 	width: 100%
 	height: 100%
-	@media screen and ( max-width: 1023.98px )
+	@media screen and ( max-width: 1023.98px ), ( any-hover: none )
 		margin-top: 5rem
+		max-width: 1600px
+		margin: 0 auto
 	&__frame
 		display: flex
 		justify-content: center
 		align-items: center
-		@media screen and ( max-width: 1023.98px )
+		@media screen and ( max-width: 1023.98px ), ( any-hover: none )
 			&:not(:last-child)
 				margin-bottom: 105px
 
@@ -38,7 +40,7 @@ body.scroll-3d
 
 .slide
 	position: relative
-	@media screen and ( max-width: 1023.98px )
+	@media screen and ( max-width: 1023.98px ), ( any-hover: none )
 		&:not(:last-child)
 			&::after,
 			&::before
@@ -59,7 +61,7 @@ body.scroll-3d
 		max-width: 75%
 		line-height: 2
 		display: grid
-		@media screen and ( max-width: 678px )
+		@media screen and ( max-width: 678px ), ( any-hover: none )
 			max-width: 90%
 		&--grid-cols
 			grid-template-columns: repeat(2, 1fr)

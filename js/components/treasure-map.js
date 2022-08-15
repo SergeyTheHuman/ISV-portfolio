@@ -19,7 +19,7 @@ if (window.location.pathname === '/page-about.html' && !isMobile() && window.inn
 
 	let isPaused = false
 
-	const speed = 25
+	const speed = 30
 
 	translateIntoView(document.querySelector('.about-greetings'))
 
@@ -41,17 +41,22 @@ if (window.location.pathname === '/page-about.html' && !isMobile() && window.inn
 			const frame = e.target.closest('.about__frame')
 			translateIntoView(frame)
 			frame.classList.add('show')
+			if (frame.querySelector('.portfolio-arrow') && frame.querySelector('.portfolio-arrow').classList.contains('arrow-animation')) {
+				frame.querySelector('.portfolio-arrow').classList.remove('arrow-animation')
+			}
 			isPaused = true
 			frame.addEventListener('mouseleave', mouseLeaveHandler)
 
 			function mouseLeaveHandler() {
-				frame.classList.remove('show')
-				$sectionAbout.classList.remove('animation')
-
 				setTimeout(() => {
+					$sectionAbout.classList.remove('animation')
+					frame.classList.remove('show')
+					if (frame.querySelector('.portfolio-arrow') && !frame.querySelector('.portfolio-arrow').classList.contains('arrow-animation')) {
+						frame.querySelector('.portfolio-arrow').classList.add('arrow-animation')
+					}
 					isPaused = false
 					setTransform()
-				}, 300)
+				}, 400)
 				frame.removeEventListener('mouseleave', mouseLeaveHandler)
 			}
 		}
@@ -90,10 +95,7 @@ if (window.location.pathname === '/page-about.html' && !isMobile() && window.inn
 				? (yTransform = yTransform)
 				: (yTransform = currentTransformY + speed * mouseYVelocity)
 		}
-		// if (Math.abs(mouseX) < 200 && Math.abs(mouseY) < 100) {
-		// 	xTransform = currentTransformX
-		// 	yTransform = currentTransformY
-		// }
+
 		$sectionAbout.style.cssText = `transform: translate(${xTransform}px,${yTransform}px)`
 
 		requestAnimationFrame(setTransform)

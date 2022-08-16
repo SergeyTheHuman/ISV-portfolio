@@ -156,6 +156,22 @@
 		@media screen and ( max-width: 1023.98px ), ( any-hover: none )
 			max-width: 80%
 			font-size: clamp(16px, 2.25rem, 28px)
+	&__help
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		font-size: clamp(14px, 0.8rem,20px)
+		margin-top: 2rem
+		animation: help-animation 2s ease 0s infinite
+		.portfolio-arrow-help
+			margin-top: -20px
+			width: 150px
+			height: 100px
+			transform: rotate(90deg)
+			opacity: 0.7
+		@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+			display: none
 
 .about-coffee
 	.portfolio-arrow
@@ -375,16 +391,26 @@ img
 	color: white
 	opacity: 0
 	&.arrow-animation
-		animation: portfolio-arrow 5s ease 0.5s infinite
+		animation: portfolio-arrow 3s ease 0.5s infinite
 	@media screen and ( max-width: 1023.98px ), ( any-hover: none )
 		display: none
+
+@keyframes help-animation
+	0%
+		opacity: 0
+	20%
+		opacity: 0.5
+	80%
+		opacity: 0.5
+	100%
+		opacity: 0
 
 @keyframes portfolio-arrow
 	0%
 		opacity: 0
 	15%
-		opacity: .5
-	30%
+		opacity: .3
+	55%
 		opacity: 0
 	100%
 		opacity: 0

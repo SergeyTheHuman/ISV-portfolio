@@ -102,7 +102,23 @@ html(lang="ru")
 				section.slider__frame.slide
 					.slide__content.slide__content--grid-rows
 						h2.slide__subtitle Контактная форма
-				
+						form.slide__form.form#contact-form
+							.form__inputs
+								label.form__label.form__label--name
+									input#name.input.form__input(type="text" name='name' placeholder='Введите имя' requaired)
+									+svg('error', 'error')
+									+svg('success', 'success')
+								label.form__label.form__label--phone
+									input#phone.input.form__input(type="tel" name='phone' placeholder='Введите телефон' requaired)
+									+svg('error', 'error')
+									+svg('success', 'success')
+								label.form__label.form__label--email
+									input#email.input.form__input(type="email" name='email' placeholder='Введите e-mail' requaired)
+									+svg('error', 'error')
+									+svg('success', 'success')
+								label.form__label.form__label--textarea
+									textarea#message.input.form__textarea(name='message' placeholder='Введите сообщение')
+							button.btn-reset.form__button Отправить
 		//- include components/header
 
 		//- include components/footer

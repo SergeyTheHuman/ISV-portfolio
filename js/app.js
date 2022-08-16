@@ -4,8 +4,17 @@ import './components/treasure-map.js'
 import Accordion from 'accordion-js'
 import { getRandomInteger } from './utils/utils.js'
 import { websitesData } from './websites/websites-data.js'
+import 'inputmask'
+import JustValidate from 'just-validate'
+import axios from 'axios'
 
 isWebp()
+
+// Contact form
+const $contactForm = document.querySelector('#contact-form')
+
+// Input phones
+const inputPhones = document.querySelectorAll('input[type=tel]')
 
 // Accordions
 const $cardsCols = document.querySelectorAll('.slide__cards-col')
@@ -24,6 +33,89 @@ let isModalOpened = false
 // Header small
 const $headerSmallNav = document.querySelector('.header-small__nav')
 const $headerSmallLogo = document.querySelector('.header-small__logo')
+
+// Contact form logic ======= START
+if ($contactForm) {
+	$contactForm.reset()
+
+	const validation = new JustValidate('#contact-form', {
+		errorLabelStyle: {
+			color: 'tomato',
+			textDecoration: 'underlined',
+		},
+	})
+
+	validation
+		.addField('#name', [
+			{
+				rule: 'minLength',
+				value: 3,
+				errorMessage: 'Слишком короткое имя',
+			},
+			{
+				rule: 'maxLength',
+				value: 15,
+				errorMessage: 'Максимальная длина - 15 символов',
+			},
+			{
+				rule: 'required',
+				errorMessage: 'Это поле является обязательным',
+			},
+		])
+		.addField('#email', [
+			{
+				rule: 'required',
+				errorMessage: 'Это поле является обязательным',
+			},
+			{
+				rule: 'email',
+				errorMessage: 'Введен не корректный e-mail',
+			},
+		])
+		.addField('#phone', [
+			{
+				rule: 'required',
+				errorMessage: 'Это поле является обязательным',
+			},
+			{
+				validator: () => {
+					const currentForm = document.querySelector('#contact-form')
+					const inputPhone = currentForm.querySelector('input[type=tel]')
+					return inputPhone.inputmask.unmaskedvalue().length === 10
+				},
+				errorMessage: 'Введен не корректный телефон',
+			},
+		])
+		.onSuccess(sendForm)
+
+	function sendForm() {
+		let formData = new FormData(this.form)
+
+		let message = `Имя: ${formData.get('name')}\nТелефон: ${formData.get('phone')}\nEmail: ${formData.get('email')}\n`
+
+		if (formData.get('message').trim().length > 0) message += `Сообщение: ${formData.get('message')}`
+
+		const TOKEN = `5565931675:AAGM-cEyTGvZ6sPZBMK6zOKL4yu6cDsLCgk`
+		const CHAT_ID = `-1001236353203`
+		const URL = `https://api.telegram.org/bot${TOKEN}/sendmessage`
+
+		axios.post(URL, {
+			chat_id: CHAT_ID,
+			parse_mode: 'html',
+			text: message,
+		})
+
+		validation.refresh()
+		this.form.reset()
+	}
+}
+// Contact form logic ======= END
+
+// Inputmask for phone ======= START
+if (inputPhones) {
+	Inputmask('+7 999 999 99-99').mask(inputPhones)
+}
+// Inputmask for phone ======= END
 
 // Accordions init ======= START
 if ($cardsCols) {

@@ -23,7 +23,7 @@ if (window.location.pathname === '/page-about.html' && !isMobile() && window.inn
 
 	const speed = 30
 
-	translateIntoView(document.querySelector('.about-greetings'))
+	translateIntoView(document.querySelector('.about-greetings'), false)
 
 	document.addEventListener('mousemove', (e) => {
 		windowCenterX = window.innerWidth / 2
@@ -102,8 +102,8 @@ if (window.location.pathname === '/page-about.html' && !isMobile() && window.inn
 		requestAnimationFrame(setTransform)
 	}
 
-	function translateIntoView(frame) {
-		$sectionAbout.classList.add('animation')
+	function translateIntoView(frame, animation = true) {
+		if (animation) $sectionAbout.classList.add('animation')
 
 		const frameWidth = frame.offsetWidth
 		const frameHeight = frame.offsetHeight

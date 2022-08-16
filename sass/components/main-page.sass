@@ -30,8 +30,12 @@ body.scroll-3d
 		justify-content: center
 		align-items: center
 		@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+			&:first-child
+				margin-top: 5rem
 			&:not(:last-child)
 				margin-bottom: 105px
+			&:last-child
+				padding-bottom: 5rem
 
 .wrapper
 	width: 100%
@@ -74,8 +78,12 @@ body.scroll-3d
 		&--grid-rows
 			grid-template-rows: auto 1fr
 			row-gap: calc(var(--gutter) / 2)
+			@media screen and ( max-width: 678px )
+				flex-grow: 1
 			.slide__subtitle
 				text-align: center
+				@media screen and ( max-width: 678px )
+					font-size: 20px
 	&__title
 		max-width: 75%
 		text-align: center
@@ -194,3 +202,90 @@ body.scroll-3d
 			padding: 18px 1.5em 0 1.5em
 		@media screen and ( max-width: 768px )
 			padding: 14px 15px 0 15px
+
+.form
+	min-width: 800px
+	@media screen and ( max-width: 1023.98px ), ( any-hover: none )
+		min-width: unset
+		width: 100%
+	&__inputs
+		width: 100%
+		display: grid
+		grid-template-columns: repeat(2,1fr)
+		gap: 15px
+		@media screen and ( max-width: 678px )
+			grid-template-columns: 1fr
+	&__label
+		display: block
+		position: relative
+		.error,
+		.success
+			position: absolute
+			top: 20px
+			right: 20px
+			width: 30px
+			height: 30px
+			opacity: 0
+			transition: opacity 0.3s ease
+			@media screen and ( max-width: 768px )
+				top: 12px
+				right: 12px
+		.just-validate-error-label
+			color: green
+			font-size: 14px
+			padding-left: 5px
+		&--email
+			grid-column: 1 / -1
+			@media screen and ( max-width: 678px )
+				grid-column: unset
+		&--textarea
+			grid-column: 1 / -1
+			min-height: 130px
+			@media screen and ( max-width: 768px )
+				min-height: 100px
+			@media screen and ( max-width: 678px )
+				grid-column: unset
+	&__input
+		width: 100%
+		padding-right: 70px
+		&.just-validate-success-field
+			border-color: #64c44b
+			& ~ .success
+				opacity: 1
+		&.just-validate-error-field
+			border-color: tomato
+			& ~ .error
+				opacity: 1
+	&__textarea
+		height: 100%
+		width: 100%
+		resize: none
+		max-height: 250px
+	&__button
+		margin-top: 15px
+		display: block
+		margin-left: auto
+		font-family: inherit
+		font-weight: 200
+		color: rgba(255, 255, 255, 0.5)
+		font-size: 20px
+		padding: 1em
+		border-radius: 10px
+		border: 1px solid rgba(255, 255, 255, 0.4)
+		transition: all 0.3s ease
+		@media screen and ( max-width: 768px )
+			font-size: 16px
+		@media screen and ( any-hover: hover )
+			&:hover
+				color: rgba(255, 255, 255, 0.7)
+				background-color: var(--color-dark-gray)
+				border-color: transparent
+		&:focus-visible
+			border-color: rgba(255, 255, 255, 0.7)
+			border-radius: 0
+		&:active
+			transform: translateY(2px)
+			color: rgba(255, 255, 255, 1)
+			box-shadow: inset -5px -5px 10px 0px rgba(0,0,0,1)
+			background-color: var(--color-dark-gray)
+			border-color: transparent

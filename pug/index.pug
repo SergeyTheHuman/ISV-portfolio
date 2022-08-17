@@ -119,6 +119,27 @@ html(lang="ru")
 								label.form__label.form__label--textarea
 									textarea#message.input.form__textarea(name='message' placeholder='Введите сообщение')
 							button.btn-reset.form__button Отправить
+				section.slider__frame.slide
+					.slide__content.slide__content--grid-rows
+						h2.slide__subtitle Ссылки на мои социальные сети
+						ul.slide__social.social
+							li.social__li
+								a.social__link(href="https://t.me/ISV_frontend" data-hover-name="Telegram" target="_blank")
+									+svg('telegram', 'telegram')
+									| Telegram
+							li.social__li
+								a.social__link(href="https://wa.me/+79805253868" data-hover-name="Whatsapp" target="_blank")
+									+svg('whatsapp', 'whatsapp')
+									| Whatsapp
+							li.social__li
+								a.social__link(href="https://vk.com/isv_frontend" data-hover-name="VK" target="_blank")
+									+svg('vk', 'vk')
+									| VK
+							li.social__li
+								a.social__link(href="mailto:sergey2611.ivanov@yandex.ru" data-hover-name="E-mail" target="_blank")
+									+svg('email', 'email')
+									| E-mail
+
 		//- include components/header
 
 		//- include components/footer

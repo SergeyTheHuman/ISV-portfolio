@@ -296,13 +296,12 @@ body.scroll-3d
 	align-items: center
 	flex-wrap: wrap
 	gap: 15px
+	max-width: 800px
 	@media screen and ( max-width: 768px )
 		margin: 0 auto
+		max-width: 500px
+	@media screen and ( max-width: 550px )
 		display: grid
-		grid-template-columns: repeat(2, 1fr)
-		max-width: 400px
-	@media screen and ( max-width: 480px )
-		grid-template-columns: 1fr
 	&__li
 		width: fit-content
 		display: flex

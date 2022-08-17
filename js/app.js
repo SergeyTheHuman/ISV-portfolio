@@ -7,6 +7,7 @@ import { websitesData } from './websites/websites-data.js'
 import 'inputmask'
 import JustValidate from 'just-validate'
 import axios from 'axios'
+import Toastify from 'toastify-js'
 
 isWebp()
 
@@ -33,6 +34,47 @@ let isModalOpened = false
 // Header small
 const $headerSmallNav = document.querySelector('.header-small__nav')
 const $headerSmallLogo = document.querySelector('.header-small__logo')
+
+// Toastify logic ======= START
+const defaultToastStyles = {
+	fontSize: `clamp(14px, 2rem, 22px)`,
+	color: `rgba(255, 255, 255, 0.75)`,
+	background: 'black',
+	borderRadius: `10px`,
+	display: `flex`,
+	alignItems: `center`,
+}
+
+const toastSuccess = Toastify({
+	text: 'Сообщение отправлено!',
+	duration: 2000,
+	close: true,
+	className: 'toast--success',
+	gravity: 'bottom', // `top` or `bottom`
+	position: 'center', // `left`, `center` or `right`
+	stopOnFocus: true, // Prevents dismissing of toast on hover
+	style: {
+		...defaultToastStyles,
+		boxShadow: `0px 0px 30px 0px rgba(100, 196, 75, 0.15)`,
+		border: `1px solid #64c44b`,
+	},
+})
+
+const toastError = Toastify({
+	text: 'Что-то пошло не так!',
+	duration: 2000,
+	close: true,
+	className: 'toast--error',
+	gravity: 'bottom', // `top` or `bottom`
+	position: 'center', // `left`, `center` or `right`
+	stopOnFocus: true, // Prevents dismissing of toast on hover
+	style: {
+		...defaultToastStyles,
+		boxShadow: `0px 0px 30px 0px rgba(255, 99, 71,0.15)`,
+		border: `1px solid tomato`,
+	},
+})
+// Toastify logic ======= END
 
 // Contact form logic ======= START
 if ($contactForm) {
@@ -87,26 +129,36 @@ if ($contactForm) {
 			},
 		])
 		.onSuccess(sendForm)
-
 	function sendForm() {
 		let formData = new FormData(this.form)
 
-		let message = `Имя: ${formData.get('name')}\nТелефон: ${formData.get('phone')}\nEmail: ${formData.get('email')}\n`
+		let message = `<i><b>Имя:</b></i>\n${formData.get('name')}\n\n<i><b>Телефон:</b>\n${formData.get('phone')}</i>\n\n<b>Email:</b>\n${formData.get(
+			'email'
+		)}\n\n`
 
-		if (formData.get('message').trim().length > 0) message += `Сообщение: ${formData.get('message')}`
+		if (formData.get('message').trim().length > 0) message += `<b>Сообщение:</b>\n${formData.get('message')}`
 
 		const TOKEN = `5565931675:AAGM-cEyTGvZ6sPZBMK6zOKL4yu6cDsLCgk`
 		const CHAT_ID = `-1001236353203`
 		const URL = `https://api.telegram.org/bot${TOKEN}/sendmessage`
 
-		axios.post(URL, {
-			chat_id: CHAT_ID,
-			parse_mode: 'html',
-			text: message,
-		})
-
-		validation.refresh()
-		this.form.reset()
+		axios
+			.post(URL, {
+				chat_id: CHAT_ID,
+				parse_mode: 'html',
+				text: message,
+			})
+			.then((response) => {
+				if (response.data.ok) toastSuccess.showToast()
+			})
+			.then(() => {
+				validation.refresh()
+				this.form.reset()
+			})
+			.catch((error) => {
+				toastError.showToast()
+				console.error(error.message)
+			})
 	}
 }
 // Contact form logic ======= END

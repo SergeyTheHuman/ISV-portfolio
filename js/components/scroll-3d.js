@@ -39,13 +39,6 @@ if (window.location.pathname === '/') {
 			$html.style.setProperty('--transition-duration', `${transition / 1000}s`)
 		}
 
-		function updateFramesZPosition(delta) {
-			$frames.forEach((frame, index) => {
-				zValues[index] += delta * -2
-				frame.style.cssText = `transform: translateZ(${zValues[index]}px);`
-			})
-		}
-
 		setCssVars()
 		resetScrollAfterReload()
 		initFramesZPositions()
@@ -55,7 +48,6 @@ if (window.location.pathname === '/') {
 			let delta = lastPosition - top
 
 			lastPosition = top
-			// updateFramesZPosition(delta)
 			throttledChangeFrame(delta)
 		})
 
